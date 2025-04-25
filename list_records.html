@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="{{ url_for('create_record') }}" class="btn btn-primary mb-3">Create New Student</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                {% for tb1fieldNamesNoId in tb1fieldNamesNoIds %}
+                    <th>{{ tb1fieldNamesNoId.capitalize() }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tb1 in tb1s %}
+                <tr>
+<!--
+                    <td>{{ tb1.id }}</td>
+-->
+                    {% for tb1fieldNamesNoId in tb1fieldNamesNoIds %}
+                        <td>{{ tb1[tb1fieldNamesNoId] }}</td>
+                    {% endfor %}
+                    <td>
+                        <a href="{{ url_for('update_record', id=tb1.id) }}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{{ url_for('delete_record', id=tb1.id) }}" class="btn btn-warning btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

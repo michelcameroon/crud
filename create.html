@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Create New Record</h2>
+    <form method="POST">
+        {% for tb1fieldNamesNoId in tb1fieldNamesNoIds %}
+            <div class="mb-3">
+                <label for="{{ field }}" class="form-label">{{ tb1fieldNamesNoId.capitalize() }}</label>
+                <input type="text" class="form-control" id="{{ tb1fieldNamesNoId }}" name="{{ tb1fieldNamesNoId }}" required>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
